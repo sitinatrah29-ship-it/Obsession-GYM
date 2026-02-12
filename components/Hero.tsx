@@ -9,14 +9,14 @@ const Hero: React.FC = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center scale-105 animate-pulse-slow"
         style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=2400')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2400&auto=format&fit=crop')",
           backgroundPosition: 'center 30%'
         }}
       />
       
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl">
-          <h1 className="text-6xl md:text-8xl font-black font-display text-white leading-[0.9] mb-6 italic tracking-tighter">
+          <h1 className="text-6xl md:text-8xl font-black font-display text-white leading-[0.9] mb-6 italic tracking-tighter uppercase">
             REDEFINE<br />
             <span className="text-brand-primary">YOUR</span> LIMITS
           </h1>

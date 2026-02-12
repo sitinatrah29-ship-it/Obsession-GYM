@@ -8,8 +8,8 @@ const About: React.FC = () => {
         <div className="relative group">
           <div className="absolute -inset-4 bg-brand-primary/20 rounded-lg blur-2xl group-hover:bg-brand-primary/30 transition-all duration-500" />
           <img 
-            src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=1200" 
-            alt="Elite Gym Equipment" 
+            src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1200&auto=format&fit=crop" 
+            alt="Elite Gym Training Area" 
             className="relative rounded-lg shadow-2xl transition-all duration-700 w-full aspect-video object-cover"
             loading="lazy"
           />
