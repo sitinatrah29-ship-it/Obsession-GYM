@@ -1,5 +1,7 @@
 import React from 'react';
 
+const h = React.createElement;
+
 const Services = () => {
   const services = [
     {
@@ -24,33 +26,28 @@ const Services = () => {
     }
   ];
 
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <span className="text-brand-primary font-bold uppercase tracking-[0.3em] text-sm block mb-4">Our Arsenal</span>
-        <h2 className="text-4xl md:text-5xl font-black font-display text-white italic uppercase">Performance Pillars</h2>
-      </div>
-      
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map((s, i) => (
-          <div key={i} className="group relative overflow-hidden rounded-lg bg-gray-900 border border-white/5 h-96 transition-all hover:-translate-y-2 shadow-xl">
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
-            <img 
-              src={s.img} 
-              alt={s.title} 
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700" 
-              loading="lazy"
-            />
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-              <h4 className="text-xl font-black font-display text-white mb-2 italic uppercase tracking-tighter">{s.title}</h4>
-              <p className="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 font-medium">
-                {s.desc}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+  return h('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
+    h('div', { className: "text-center mb-16" },
+      h('span', { className: "text-brand-primary font-bold uppercase tracking-[0.3em] text-sm block mb-4" }, "Our Arsenal"),
+      h('h2', { className: "text-4xl md:text-5xl font-black font-display text-white italic uppercase" }, "Performance Pillars")
+    ),
+    h('div', { className: "grid md:grid-cols-2 lg:grid-cols-4 gap-6" },
+      services.map((s, i) => 
+        h('div', { key: i, className: "group relative overflow-hidden rounded-lg bg-gray-900 border border-white/5 h-96 transition-all hover:-translate-y-2 shadow-xl" },
+          h('div', { className: "absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" }),
+          h('img', { 
+            src: s.img, 
+            alt: s.title, 
+            className: "absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700",
+            loading: "lazy"
+          }),
+          h('div', { className: "absolute bottom-0 left-0 right-0 p-6 z-20" },
+            h('h4', { className: "text-xl font-black font-display text-white mb-2 italic uppercase tracking-tighter" }, s.title),
+            h('p', { className: "text-gray-200 text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 font-medium" }, s.desc)
+          )
+        )
+      )
+    )
   );
 };
 
