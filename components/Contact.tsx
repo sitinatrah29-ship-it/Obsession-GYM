@@ -1,8 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const h = React.createElement;
+// Using any for the h alias to prevent strict typing issues with SVG elements and standard DOM attributes like className in manual createElement calls
+const h: any = React.createElement;
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    // Validate required fields (name + message as requested)
+    if (!formData.name.trim() || !formData.message.trim()) {
+      alert("Please enter your Name and Message to proceed.");
+      return;
+    }
+
+    const whatsappNumber = "60132347515";
+    const messageBody = `NEW INQUIRY
+Name: ${formData.name}
+Email: ${formData.email || 'N/A'}
+Message: ${formData.message}`;
+
+    const encodedMessage = encodeURIComponent(messageBody);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+  };
+
   return h('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
     h('div', { className: "grid lg:grid-cols-2 gap-16" },
       h('div', null,
@@ -11,7 +48,7 @@ const Contact = () => {
           "Start Your ", h('br'), h('span', { className: "text-brand-primary" }, "Transformation"), " Today"
         ),
         h('p', { className: "text-gray-400 mb-8 max-w-md leading-relaxed" },
-          "Fill out the form below for a free consultation and a 7-day trial pass. No commitment required."
+          "Fill out the form below to reach out directly via WhatsApp. Get a free consultation and a 7-day trial pass."
         ),
         h('div', { className: "space-y-6" },
           h('div', { className: "flex items-center space-x-4" },
@@ -30,22 +67,51 @@ const Contact = () => {
       ),
       h('div', { className: "bg-brand-secondary p-8 md:p-12 rounded-lg border border-white/5 relative shadow-2xl overflow-hidden" },
         h('div', { className: "absolute top-0 right-0 w-32 h-32 bg-brand-primary/10 blur-3xl -mr-16 -mt-16" }),
-        h('form', { className: "space-y-6 relative z-10", onSubmit: (e) => e.preventDefault() },
+        h('form', { className: "space-y-6 relative z-10", onSubmit: handleSubmit },
           h('div', { className: "grid md:grid-cols-2 gap-6" },
             h('div', { className: "space-y-2" },
-              h('label', { className: "text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1" }, "Full Name"),
-              h('input', { type: "text", className: "w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-all text-sm font-bold", placeholder: "E.G. JOHN DOE" })
+              h('label', { className: "text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1" }, "Full Name (Required)"),
+              h('input', { 
+                type: "text", 
+                name: "name",
+                value: formData.name,
+                onChange: handleInputChange,
+                className: "w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-all text-sm font-bold", 
+                placeholder: "E.G. JOHN DOE",
+                required: true
+              })
             ),
             h('div', { className: "space-y-2" },
-              h('label', { className: "text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1" }, "Email Address"),
-              h('input', { type: "email", className: "w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-all text-sm font-bold", placeholder: "EMAIL@EXAMPLE.COM" })
+              h('label', { className: "text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1" }, "Email Address (Required)"),
+              h('input', { 
+                type: "email", 
+                name: "email",
+                value: formData.email,
+                onChange: handleInputChange,
+                className: "w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-all text-sm font-bold", 
+                placeholder: "EMAIL@EXAMPLE.COM",
+                required: true
+              })
             )
           ),
           h('div', { className: "space-y-2" },
-            h('label', { className: "text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1" }, "Message"),
-            h('textarea', { rows: 4, className: "w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-all text-sm font-bold", placeholder: "TELL US YOUR GOALS..." })
+            h('label', { className: "text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1" }, "Message (Required)"),
+            h('textarea', { 
+              rows: 4, 
+              name: "message",
+              value: formData.message,
+              onChange: handleInputChange,
+              className: "w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-all text-sm font-bold", 
+              placeholder: "TELL US YOUR GOALS...",
+              required: true
+            })
           ),
-          h('button', { type: "submit", className: "w-full py-4 bg-brand-primary hover:bg-red-700 text-white font-black uppercase tracking-[0.2em] transition-all rounded-sm shadow-lg shadow-brand-primary/20" }, "Submit Request")
+          h('button', { 
+            type: "submit", 
+            className: "w-full py-4 bg-brand-primary hover:bg-red-700 text-white font-black uppercase tracking-[0.2em] transition-all rounded-sm shadow-lg shadow-brand-primary/20 flex items-center justify-center space-x-2" 
+          }, 
+            h('span', null, "Submit via WhatsApp")
+          )
         )
       )
     )
