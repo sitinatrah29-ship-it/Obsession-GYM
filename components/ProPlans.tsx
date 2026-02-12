@@ -1,68 +1,54 @@
 
 import React from 'react';
 
-const plans = [
-  {
-    title: "Hypertrophy Master",
-    level: "Intermediate",
-    focus: "Muscle Growth",
-    description: "Our signature 12-week volume-based program designed to pack on high-quality muscle through progressive overload.",
-    icon: "💪"
-  },
-  {
-    title: "The Shred Engine",
-    level: "All Levels",
-    focus: "Fat Loss",
-    description: "A high-intensity hybrid approach combining strength training with metabolic conditioning to reveal defined aesthetics.",
-    icon: "🔥"
-  },
-  {
-    title: "Elite Strength",
-    level: "Advanced",
-    focus: "Powerlifting",
-    description: "Focus on the Big Three. This plan uses RPE-based training to maximize your squat, bench, and deadlift numbers safely.",
-    icon: "🏋️‍♂️"
-  }
-];
-
 const ProPlans: React.FC = () => {
+  const plans = [
+    {
+      title: "The Shred Engine",
+      focus: "Fat Loss",
+      price: "$49",
+      desc: "High intensity hybrid training designed to incinerate fat while preserving muscle."
+    },
+    {
+      title: "Hypertrophy Master",
+      focus: "Bulking",
+      price: "$69",
+      desc: "Scientific volume-based growth blueprint for maximum aesthetic results."
+    },
+    {
+      title: "Elite Strength",
+      focus: "Power",
+      price: "$89",
+      desc: "RPE-based peaking program to maximize your squat, bench, and deadlift."
+    }
+  ];
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
-        <h2 className="text-brand-primary font-bold uppercase tracking-widest mb-4">Elite Strategy</h2>
-        <h3 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">CURATED TRAINING BLUEPRINTS</h3>
-        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-          No guesswork. Just results. Choose from our battle-tested programs built by professional athletes and coaches.
-        </p>
+        <span className="text-brand-primary font-bold uppercase tracking-[0.3em] text-sm block mb-4">Membership</span>
+        <h2 className="text-4xl md:text-5xl font-black font-display text-white italic uppercase">Select Your Blueprint</h2>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {plans.map((plan, idx) => (
-          <div key={idx} className="bg-brand-secondary/50 border border-gray-800 rounded-2xl p-8 hover:border-brand-primary transition-all group flex flex-col">
-            <div className="text-4xl mb-6">{plan.icon}</div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-xs font-black uppercase tracking-widest text-brand-accent bg-brand-accent/10 px-3 py-1 rounded-full border border-brand-accent/20">
-                {plan.level}
-              </span>
-              <span className="text-[10px] font-bold text-gray-500 uppercase">{plan.focus}</span>
+      <div className="grid md:grid-cols-3 gap-8">
+        {plans.map((p, i) => (
+          <div key={i} className="flex flex-col p-8 bg-gray-900 border border-white/10 rounded-lg relative overflow-hidden group hover:border-brand-primary transition-colors">
+            {i === 1 && <div className="absolute top-0 right-0 bg-brand-primary text-white text-[10px] font-black px-4 py-1 uppercase tracking-widest -rotate-0 rounded-bl-lg">Most Popular</div>}
+            
+            <span className="text-brand-primary text-xs font-black uppercase tracking-widest mb-2">{p.focus}</span>
+            <h4 className="text-2xl font-black font-display text-white italic uppercase mb-4">{p.title}</h4>
+            <div className="flex items-baseline mb-6">
+              <span className="text-4xl font-black text-white italic">{p.price}</span>
+              <span className="text-gray-500 ml-2 font-bold uppercase text-xs tracking-widest">/ Month</span>
             </div>
-            <h4 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">{plan.title}</h4>
-            <p className="text-gray-400 mb-8 leading-relaxed flex-grow">{plan.description}</p>
-            <button className="w-full py-4 border border-brand-primary text-brand-primary group-hover:bg-brand-primary group-hover:text-white font-bold uppercase tracking-widest transition-all text-sm rounded-sm">
-              Get This Plan
+            <p className="text-gray-400 mb-8 flex-grow leading-relaxed">
+              {p.desc}
+            </p>
+            <button className="w-full py-4 bg-white/5 hover:bg-brand-primary text-white font-black uppercase tracking-widest text-sm border border-white/10 group-hover:border-brand-primary transition-all rounded-sm">
+              Select Blueprint
             </button>
           </div>
         ))}
-      </div>
-
-      <div className="mt-16 bg-brand-primary/10 border border-brand-primary/20 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div className="max-w-xl text-center md:text-left">
-          <h4 className="text-2xl font-display font-bold text-white mb-2 uppercase italic tracking-tighter">Need something custom?</h4>
-          <p className="text-gray-400">Our elite trainers can build a 100% personalized plan based on your unique body type and goals.</p>
-        </div>
-        <a href="#contact" className="bg-brand-primary text-white px-10 py-4 font-black uppercase tracking-tighter hover:bg-red-700 transition-colors whitespace-nowrap">
-          Talk to a Coach
-        </a>
       </div>
     </div>
   );

@@ -26,26 +26,22 @@ const Testimonials: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
-        <h2 className="text-brand-primary font-bold uppercase tracking-widest mb-4">Success Stories</h2>
-        <h3 className="text-4xl md:text-5xl font-display font-bold text-white">WHAT OUR ELITES SAY</h3>
+        <span className="text-brand-primary font-bold uppercase tracking-[0.3em] text-sm block mb-4">Elite Voices</span>
+        <h2 className="text-4xl md:text-5xl font-black font-display text-white italic uppercase">Forged in Metal</h2>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-8">
         {testimonials.map((t, i) => (
-          <div key={i} className="bg-brand-secondary p-8 rounded-2xl border border-gray-800 flex flex-col h-full">
-            <div className="flex gap-1 text-brand-primary mb-6">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-            </div>
-            <p className="text-gray-300 italic mb-8 flex-grow">"{t.content}"</p>
-            <div className="flex items-center gap-4">
-              <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full grayscale hover:grayscale-0 transition-all" />
+          <div key={i} className="bg-black/40 p-8 rounded-lg border border-white/5 backdrop-blur-sm italic relative">
+            <div className="text-brand-primary text-5xl font-serif absolute top-4 left-4 opacity-20">"</div>
+            <p className="text-gray-300 relative z-10 mb-8 leading-relaxed">
+              {t.content}
+            </p>
+            <div className="flex items-center">
+              <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full mr-4 border border-brand-primary/40 p-0.5" />
               <div>
-                <h4 className="text-white font-bold">{t.name}</h4>
-                <p className="text-gray-500 text-sm">{t.role}</p>
+                <h5 className="text-white font-black uppercase text-xs tracking-widest leading-none">{t.name}</h5>
+                <span className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">{t.role}</span>
               </div>
             </div>
           </div>

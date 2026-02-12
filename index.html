@@ -11,15 +11,18 @@
       tailwind.config = {
         theme: {
           extend: {
+            animation: {
+              'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
               display: ['Oswald', 'sans-serif'],
             },
             colors: {
               brand: {
-                primary: '#EF4444', // Red 600
-                secondary: '#111827', // Gray 900
-                accent: '#3B82F6', // Blue 500
+                primary: '#EF4444',
+                secondary: '#111827',
+                accent: '#3B82F6',
               }
             }
           }
@@ -34,6 +37,11 @@
       .scroll-mt-20 {
         scroll-margin-top: 5rem;
       }
+      /* Ensure images fill containers properly */
+      img {
+        display: block;
+        max-width: 100%;
+      }
     </style>
     <script type="importmap">
 {
@@ -41,15 +49,13 @@
     "react": "https://esm.sh/react@19.0.0",
     "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+    "react/": "https://esm.sh/react@^19.2.4/"
   }
 }
 </script>
   </head>
   <body>
     <div id="root"></div>
-    <!-- Entry point script -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
