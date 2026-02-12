@@ -1,7 +1,6 @@
-
 import React from 'react';
 
-const ProPlans: React.FC = () => {
+const ProPlans = () => {
   const plans = [
     {
       title: "The Shred Engine",

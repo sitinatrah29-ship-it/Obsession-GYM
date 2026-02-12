@@ -1,10 +1,8 @@
-
 import React from 'react';
 
-const Hero: React.FC = () => {
+const Hero = () => {
   return (
     <div className="relative h-screen flex items-center overflow-hidden bg-gray-950">
-      {/* Background Overlay */}
       <div className="absolute inset-0 bg-black/50 z-10" />
       <div 
         className="absolute inset-0 bg-cover bg-center scale-105 animate-pulse-slow transition-opacity duration-1000"
@@ -40,7 +38,6 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
-      {/* Decorative vertical line */}
       <div className="absolute left-8 bottom-0 h-32 w-px bg-brand-primary z-20 hidden lg:block shadow-[0_0_15px_rgba(239,68,68,0.5)]" />
     </div>
   );

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from './components/Navbar.tsx';
 import Hero from './components/Hero.tsx';
@@ -9,7 +8,7 @@ import Testimonials from './components/Testimonials.tsx';
 import Contact from './components/Contact.tsx';
 import Footer from './components/Footer.tsx';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <div className="min-h-screen flex flex-col font-sans">
       <Navbar />

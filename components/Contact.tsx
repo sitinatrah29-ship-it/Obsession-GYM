@@ -1,7 +1,6 @@
-
 import React from 'react';
 
-const Contact: React.FC = () => {
+const Contact = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid lg:grid-cols-2 gap-16">
@@ -29,7 +28,7 @@ const Contact: React.FC = () => {
         
         <div className="bg-brand-secondary p-8 md:p-12 rounded-lg border border-white/5 relative shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/10 blur-3xl -mr-16 -mt-16" />
-          <form className="space-y-6 relative z-10">
+          <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Full Name</label>
@@ -44,7 +43,7 @@ const Contact: React.FC = () => {
               <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Message</label>
               <textarea rows={4} className="w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-brand-primary transition-all text-sm font-bold" placeholder="TELL US YOUR GOALS..."></textarea>
             </div>
-            <button className="w-full py-4 bg-brand-primary hover:bg-red-700 text-white font-black uppercase tracking-[0.2em] transition-all rounded-sm shadow-lg shadow-brand-primary/20">
+            <button type="submit" className="w-full py-4 bg-brand-primary hover:bg-red-700 text-white font-black uppercase tracking-[0.2em] transition-all rounded-sm shadow-lg shadow-brand-primary/20">
               Submit Request
             </button>
           </form>
