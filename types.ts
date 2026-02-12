@@ -22,7 +22,7 @@ export interface TrainingPlan {
   icon: string;
 }
 
-// Exercise interface used within the WorkoutPlan
+// Fix: Adding WorkoutPlan and Exercise interfaces to resolve module export errors in related services and components
 export interface Exercise {
   name: string;
   sets: number;
@@ -30,7 +30,6 @@ export interface Exercise {
   description: string;
 }
 
-// WorkoutPlan interface for structured Gemini AI responses
 export interface WorkoutPlan {
   title: string;
   exercises: Exercise[];
