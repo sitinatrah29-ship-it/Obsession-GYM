@@ -3,11 +3,11 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <div className="relative h-screen flex items-center overflow-hidden">
+    <div className="relative h-screen flex items-center overflow-hidden bg-gray-950">
       {/* Background Overlay */}
       <div className="absolute inset-0 bg-black/50 z-10" />
       <div 
-        className="absolute inset-0 bg-cover bg-center scale-105 animate-pulse-slow"
+        className="absolute inset-0 bg-cover bg-center scale-105 animate-pulse-slow transition-opacity duration-1000"
         style={{ 
           backgroundImage: "url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2400&auto=format&fit=crop')",
           backgroundPosition: 'center 30%'

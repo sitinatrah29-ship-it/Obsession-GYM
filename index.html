@@ -34,6 +34,7 @@
         background-color: #0B0F19;
         color: #F3F4F6;
         margin: 0;
+        min-height: 100vh;
       }
       .scroll-mt-20 {
         scroll-margin-top: 5rem;
@@ -44,6 +45,13 @@
         max-width: 100%;
         height: auto;
         object-fit: cover;
+        background-color: #161B22; /* Placeholder color while loading */
+      }
+      /* Ensure the root is visible */
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
     </style>
     <script type="importmap">
@@ -60,6 +68,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="index.tsx"></script>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
