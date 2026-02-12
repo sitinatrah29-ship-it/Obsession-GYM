@@ -1,6 +1,6 @@
 {
-  "name": "Copy of Obsession GYM",
-  "description": "A modern, high-energy gymnasium landing page featuring a custom AI workout planner powered by Gemini.",
+  "name": "Obsession GYM",
+  "description": "A modern, high-energy gymnasium landing page for elite performance and community.",
   "requestFramePermissions": [
     "geolocation"
   ]

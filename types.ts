@@ -14,13 +14,25 @@ export interface Testimonial {
   avatar: string;
 }
 
+export interface TrainingPlan {
+  title: string;
+  level: string;
+  focus: string;
+  description: string;
+  icon: string;
+}
+
+// Exercise interface used within the WorkoutPlan
+export interface Exercise {
+  name: string;
+  sets: number;
+  reps: string;
+  description: string;
+}
+
+// WorkoutPlan interface for structured Gemini AI responses
 export interface WorkoutPlan {
   title: string;
-  exercises: {
-    name: string;
-    sets: number;
-    reps: string;
-    description: string;
-  }[];
+  exercises: Exercise[];
   tips: string[];
 }

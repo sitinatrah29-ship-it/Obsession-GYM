@@ -16,13 +16,13 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'AI Planner', href: '#ai-planner' },
-    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'Pro Plans', href: '#plans' },
+    { name: 'Results', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-md py-3' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/95 backdrop-blur-md py-3 shadow-xl' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
@@ -31,24 +31,22 @@ const Navbar: React.FC = () => {
             </a>
           </div>
           
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-gray-300 hover:text-brand-primary transition-colors text-sm font-semibold uppercase tracking-wider"
-                >
-                  {link.name}
-                </a>
-              ))}
+          <div className="hidden md:flex items-center space-x-10">
+            {navLinks.map((link) => (
               <a
-                href="#contact"
-                className="bg-brand-primary hover:bg-red-700 text-white px-6 py-2 rounded-full text-sm font-bold uppercase transition-all transform hover:scale-105"
+                key={link.name}
+                href={link.href}
+                className="text-gray-300 hover:text-brand-primary transition-colors text-xs font-bold uppercase tracking-widest"
               >
-                Join Now
+                {link.name}
               </a>
-            </div>
+            ))}
+            <a
+              href="#contact"
+              className="bg-brand-primary hover:bg-red-700 text-white px-8 py-2.5 rounded-sm text-xs font-black uppercase tracking-tighter transition-all transform hover:-translate-y-0.5"
+            >
+              Join Now
+            </a>
           </div>
           
           <div className="md:hidden">
@@ -68,14 +66,13 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/95 absolute w-full left-0 top-full py-4 px-4 space-y-4 border-t border-gray-800">
+        <div className="md:hidden bg-black/98 absolute w-full left-0 top-full py-8 px-6 space-y-6 border-t border-gray-900 shadow-2xl">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="block text-gray-300 hover:text-brand-primary transition-colors text-lg font-bold"
+              className="block text-gray-200 hover:text-brand-primary transition-colors text-xl font-display font-bold uppercase tracking-widest"
               onClick={() => setIsMenuOpen(false)}
             >
               {link.name}
@@ -83,7 +80,7 @@ const Navbar: React.FC = () => {
           ))}
           <a
             href="#contact"
-            className="block w-full text-center bg-brand-primary text-white px-6 py-3 rounded-md text-lg font-bold"
+            className="block w-full text-center bg-brand-primary text-white px-6 py-4 rounded-sm text-lg font-black uppercase tracking-tighter"
             onClick={() => setIsMenuOpen(false)}
           >
             Join Now

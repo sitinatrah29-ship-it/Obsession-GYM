@@ -2,7 +2,8 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { WorkoutPlan } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// Initialize GoogleGenAI client with the mandatory API_KEY environment variable
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const generateWorkoutPlan = async (goal: string, level: string): Promise<WorkoutPlan> => {
   const prompt = `Generate a detailed 3-exercise workout session for someone who is a ${level} level athlete and has the goal: "${goal}". Provide specific sets, reps, and a brief description for each exercise, plus 3 professional tips.`;
@@ -40,6 +41,7 @@ export const generateWorkoutPlan = async (goal: string, level: string): Promise<
   });
 
   try {
+    // Access the text property directly (not as a method) as per @google/genai documentation
     const jsonStr = response.text.trim();
     return JSON.parse(jsonStr) as WorkoutPlan;
   } catch (error) {
